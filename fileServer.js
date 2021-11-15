@@ -1,5 +1,5 @@
 const fileSystem = require ('fs');
-function getTodos(req, res) {
+ function getTodos(req, res) {
     fileSystem.readFile('./fileServe.txt', 'utf-8',(err, fileData) =>{
         if (err) {
             res.status(400).send(err);
@@ -10,8 +10,10 @@ function getTodos(req, res) {
     })
 }
 
-function saveTodo(req, res) {
+ function saveTodo(req, res) {
     fileSystem.appendFile('./fileServe.txt', '\nwarm up the cuddles', 'utf8', getTodos)
 };
 
-module.exports = {getTodos:getTodos};
+module.exports.getTodos = getTodos;
+module.exports.saveTodo = saveTodo;
+
